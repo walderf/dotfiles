@@ -1,58 +1,70 @@
+# .zshrc.local 
+
+## nvim 
 export VISUAL=nvim
 export EDITOR=nvim
+alias e='nvim'
+alias n='nvim'
+alias vimdiff='nvim -d'
 
+# ruby
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+
+# user bin
 if [ -d "$HOME/.local/bin" ] ; then
       PATH="$HOME/.local/bin:$PATH"
 fi
 
-# custom completions
-#
-# "config" alias completion
-zstyle ':completion:*:*:git:*' user-commands config:'config dotfile git alias'
+# dotfile (config) git repo - "figgit" 
+zstyle ':completion:*:*:git:*' user-commands figgit:'figgit dotfile git alias'
+alias figgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # fzf
 export FZF_DEFAULT_OPTS="--height=67% --layout=reverse --info=inline --border --margin=1 --padding=1 --color=bg+:#3c3836,bg:#32302f,spinner:#fb4934,hl:#928374,fg:#ebdbb2,header:#928374,info:#8ec07c,pointer:#fb4934,marker:#fb4934,fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934"
 export MANWIDTH=107
 setopt LIST_PACKED
 
-# setting a $DATE variable for use with file naming
-zmodload zsh/datetime
-alias currdate='strftime "%m-%d-%Y" $EPOCHSECONDS'
-export DATE=`currdate`
-
-# shortcut to web dev dirs 
-alias wr='echo -e "\033[1;37m% \033[0;32mcd \033[0;33m/srv/httpd/sites\033[0;32m && \033[0;32mls -lah\033[0m" && cd /srv/httpd/sites/ && la'
-
-# aliases
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias e='nvim'
-alias n='nvim'
-alias vimdiff='nvim -d'
+# sudo editing
 alias se='sudoedit'
 alias he='sudoedit -u http'
-alias hu="echo && echo what was this going to be? http(d)? sudo? something? && echo"
-alias ez='nvim ~/.zshrc.local'
-alias rz='echo && echo reloading ~/.zshrc.local/ && echo && source ~/.zshrc.local'
-alias psc='ps xawf -eo pid,user,cgroup,args'
 alias hv='sudoedit /etc/httpd/conf/extra/httpd-vhosts.conf'
 
-alias ports='sudo netstat -tulape'
-alias c='clear && echo -e "\n\n\n\t\t\t\t\t\033[0;32mcleared terminals are \033[1;31mgreat\n\n\n\t\t\033[0;34na fresh start \t\t\t\t\033[0;35mwith \033[1;31mno \033[0;35mclutter \n\n\n\n\n \t\033[0;33mjust you\n\t\t\t\t\tand the \033[1;33mcommand prompt \n\n\n \t\t\t\t\t\t\t\t\t\t\t\033[0;36mnot a single thing more \n \n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n \n \n"'
+# .zshrc editing 
+alias ez='nvim ~/.zshrc.local'
+alias rz='echo && echo reloading ~/.zshrc.local/ && echo && source ~/.zshrc.local'
 
+# information aliases
+alias psc='ps xawf -eo pid,user,cgroup,args'
+alias ports='sudo netstat -tulape'
+
+# reload httpd systemd service then give status  
 alias hr='echo && echo reloading httpd.service at && currdate && echo && sudo systemctl reload httpd.service && systemctl status httpd.service'
+alias wr='echo -e "\033[1;37m% \033[0;32mcd \033[0;33m/srv/httpd/sites\033[0;32m && \033[0;32mls -lah\033[0m" && cd /srv/httpd/sites/ && la'
+
+# sudo systemctl 
 alias scs='sudo systemctl status'
 alias sc='sudo systemctl'
 alias scrr='sudo systemctl reload-or-restart'
 alias scr='sudo systemctl reload'
 alias sct='sudo systemctl start'
 
-# pacman
-# 
+# package management 
+
 # show all installed packages sorted by date installed
 alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort"
+
 # find all .pac* files
 alias pacnew='locate --existing --regex "\.pac(new|save)$"'
+
 # friggin cool utility using fzf to list installed packages showing a preview of each 
 alias pzf="pacman -Qq | fzf --preview 'pacman -Qil {}' --height=97% --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 
+# totally a terminal clearing clear alias
+alias c='clear && echo -e "\n\n\n\t\t\t\t\t\033[0;32mcleared terminals are \033[1;31mgreat\n\n\n\t\t\033[0;34na fresh start \t\t\t\t\033[0;35mwith \033[1;31mno \033[0;35mclutter \n\n\n\n\n \t\033[0;33mjust you\n\t\t\t\t\tand the \033[1;33mcommand prompt \n\n\n \t\t\t\t\t\t\t\t\t\t\t\033[0;36mnot a single thing more \n \n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n \n \n"'
+
+# part of a future file naming function 
+zmodload zsh/datetime
+alias currdate='strftime "%m-%d-%Y" $EPOCHSECONDS'
+export DATE=`currdate`
 
