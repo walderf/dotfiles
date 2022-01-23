@@ -1,5 +1,8 @@
 """"" neovim - init.vim
 
+" requires plug.vim from  https://github.com/junegunn/vim-plug
+" must run :PlugInstall upon initial load
+
 """ plugins (vim-plug)
 call plug#begin('~/.vim/plugged')
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
