@@ -1,6 +1,6 @@
 """"" neovim - init.vim
 
-" requires plug.vim from  https://github.com/junegunn/vim-plug
+" requires plug.vim from https://github.com/junegunn/vim-plug
 " must run :PlugInstall upon initial load
 
 """ plugins (vim-plug)
