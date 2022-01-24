@@ -63,8 +63,11 @@ set ignorecase
 set smartcase
 set ruler
 set number
-" number of spaces for <tab>
+" number of spaces for \t
 set tabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
 
 " theme
 colorscheme gruvbox
