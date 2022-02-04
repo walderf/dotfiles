@@ -58,7 +58,7 @@ alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort"
 alias pacnew='locate --existing --regex "\.pac(new|save)$"'
 
 # friggin cool utility using fzf to list installed packages showing a preview of each 
-alias pzf="pacman -Qq | fzf --preview 'pacman -Qil {}' --height=97% --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+alias pzf="yay -Qq | fzf --preview 'yay -Qil {}' --height=97% --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'"
 
 # totally a terminal clearing clear alias
 alias c='clear && echo -e "\n\n\n\t\t\t\t\t\033[0;32mcleared terminals are \033[1;31mgreat\n\n\n\t\t\033[0;34na fresh start \t\t\t\t\033[0;35mwith \033[1;31mno \033[0;35mclutter \n\n\n\n\n \t\033[0;33mjust you\n\t\t\t\t\tand the \033[1;33mcommand prompt \n\n\n \t\t\t\t\t\t\t\t\t\t\t\033[0;36mnot a single thing more \n \n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n \n \n"'
