@@ -11,6 +11,11 @@ alias vimdiff='nvim -d'
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export PATH="$PATH:$GEM_HOME/bin"
 
+# composer
+if [ -d "$HOME/.local/bin" ] ; then
+      PATH="$HOME/.config/composer/vendor/bin:$PATH"
+fi
+
 # user bin
 if [ -d "$HOME/.local/bin" ] ; then
       PATH="$HOME/.local/bin:$PATH"
@@ -29,6 +34,9 @@ setopt LIST_PACKED
 alias se='sudoedit'
 alias he='sudoedit -u http'
 alias hv='sudoedit /etc/httpd/conf/extra/httpd-vhosts.conf'
+
+# sudo 
+alias hd='sudo -u http'
 
 # .zshrc editing 
 alias ez='nvim ~/.zshrc.local'
