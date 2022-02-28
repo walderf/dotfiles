@@ -1,2 +1,3 @@
+
 startup_message off
 hardstatus alwayslastline '%{= G}[%{G}%H%{g}][%= %{= w}%?%-Lw%?%{= R}%n*%f %t%?%{= R}(%u)%?%{= w}%+Lw%?%= %{= g}][%{y}Load: %l%{g}][%{B}%D %m-%d-%Y %{W}%C:%s%a%{g}]'
