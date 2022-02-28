@@ -18,12 +18,13 @@ What you will learn here is not much different than what is provided in the abov
 
 *Note: This guide assumes you're using zsh as your shell and have git installed.*
 
-<br />
+
+[`^`](#)
 
 ___
 
 
-# Step 1:
+# STEP 1:
 
 ### edit *~/.zshrc.local*
 
@@ -35,7 +36,7 @@ zstyle ':completion:*:*:git:*' user-commands figgit:'figgit dotfile git alias'
 alias figgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 ```
 
-<br />
+[`^`](#)
 
 ___
 
@@ -59,10 +60,10 @@ ___
 
 ##### [source](https://unix.stackexchange.com/a/550566/453739)
 
-<br />
+
+[`^`](#)
 
 ___
-
 
 # STEP 3:
 
@@ -90,3 +91,8 @@ figgit commit -m "init.vim"
 ```
 figgit push
 ```
+
+[`^`](#)
+
+
+___
