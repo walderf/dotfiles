@@ -1,0 +1,14 @@
+* {
+  text-shadow: none;
+}
+.window-frame, .window-frame:backdrop {
+  box-shadow: 0 0 0 black;
+  border-style: none;
+  margin: 0;
+  border-radius: 4px;
+}
+    
+.titlebar {
+  border-radius: 0;
+}
+
