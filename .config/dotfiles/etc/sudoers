@@ -1,0 +1,8 @@
+Defaults timestamp_timeout=180
+Defaults insults
+
+root ALL=(ALL) ALL
+
+%wheel ALL=(ALL) ALL
+
+@includedir /etc/sudoers.d
