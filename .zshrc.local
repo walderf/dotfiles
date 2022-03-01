@@ -27,6 +27,7 @@ alias figgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # fzf
 export FZF_DEFAULT_OPTS="--height=67% --layout=reverse --info=inline --border --margin=1 --padding=1 --color=bg+:#3c3836,bg:#32302f,spinner:#fb4934,hl:#928374,fg:#ebdbb2,header:#928374,info:#8ec07c,pointer:#fb4934,marker:#fb4934,fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934"
+export FZF_DEFAULT_COMMAND='fd --type f'
 export MANWIDTH=107
 setopt LIST_PACKED
 
