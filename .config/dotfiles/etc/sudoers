@@ -1,5 +1,6 @@
 Defaults timestamp_timeout=180
 Defaults insults
+Defaults passwd_tries=6
 
 root ALL=(ALL) ALL
 
