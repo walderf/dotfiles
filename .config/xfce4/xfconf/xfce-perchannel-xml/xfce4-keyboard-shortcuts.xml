@@ -31,21 +31,20 @@
       </property>
     </property>
     <property name="custom" type="empty">
-      <property name="&lt;Alt&gt;F2" type="string" value="xfce4-appfinder --collapsed">
+      <property name="&lt;Alt&gt;F2" type="empty">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
-      <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder -c">
+      <property name="&lt;Super&gt;r" type="empty">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
-      <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder">
+      <property name="&lt;Alt&gt;F3" type="empty">
         <property name="startup-notify" type="bool" value="true"/>
       </property>
       <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="&lt;Shift&gt;Print" type="string" value="xfce4-screenshooter -r"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xfce4-session-logout"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="string" value="xflock4"/>
-      <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;Escape" type="string" value="xfce4-taskmanager"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
@@ -67,6 +66,9 @@
       <property name="&lt;Alt&gt;&lt;Super&gt;m" type="string" value="firefox --new-window https://mail.google.com"/>
       <property name="&lt;Super&gt;p" type="string" value="firefox --new-window https://archlinux.org/packages/"/>
       <property name="&lt;Super&gt;g" type="string" value="/home/walder/.local/bin/gimp-appimage"/>
+      <property name="&lt;Super&gt;w" type="string" value="libreoffice --writer"/>
+      <property name="&lt;Super&gt;n" type="string" value="xfce4-keyboard-settings"/>
+      <property name="&lt;Super&gt;d" type="string" value="firefox --new-window https://github.com/walderf/dotfiles"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
