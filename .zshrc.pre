@@ -1,0 +1,9 @@
+#
+#
+#
+
+#zmodload zsh/datetime
+
+HISTSIZE=9999999
+SAVEHIST=$HISTSIZE
+
