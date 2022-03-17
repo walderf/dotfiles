@@ -2,13 +2,29 @@
   text-shadow: none;
 }
 .window-frame, .window-frame:backdrop {
-  box-shadow: 0 0 0 black;
+/*  box-shadow: 0 0 0 black; */
+  box-shadow: none;
   border-style: none;
   margin: 0;
-  border-radius: 4px;
+  border-radius: 5px;
 }
     
 .titlebar {
   border-radius: 0;
 }
 
+decoration  {
+	transition: 0;
+	box-shadow: none;
+  border-radius: 5px;
+	margin: 5px;
+	padding: 0;
+
+}
+decoration:backdrop  {
+	transition: 0;
+	box-shadow: none;
+  border-radius: 5px;
+	margin: 5px;
+	padding: 0;
+}
