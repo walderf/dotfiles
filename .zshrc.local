@@ -73,6 +73,10 @@ alias hd='sudo -u http'
 alias ez='nvim ~/.zshrc.local'
 alias rz='echo && echo reloading ~/.zshrc.local/ && echo && source ~/.zshrc.local'
 
+# ls aliases
+alias la='ls -lah --color=auto'
+alias las='ls -lahtor --color=auto' # 'la' reverse sorted by ctime
+
 # information aliases
 alias psc='ps xawf -eo pid,user,cgroup,args'
 alias ports='sudo netstat -tulape'
