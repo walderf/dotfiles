@@ -53,13 +53,11 @@
       <property name="Print" type="string" value="xfce4-screenshooter -f -s /home/walder/.shots/fullsaves/"/>
       <property name="&lt;Super&gt;f" type="string" value="thunar"/>
       <property name="&lt;Super&gt;b" type="string" value="firefox --new-window"/>
-      <property name="&lt;Super&gt;c" type="string" value="chromium --new-window"/>
       <property name="&lt;Super&gt;t" type="string" value="Forkgram"/>
       <property name="&lt;Super&gt;m" type="string" value="firefox --new-window https://login.mailbox.org"/>
       <property name="&lt;Super&gt;i" type="string" value="chromium --new-window --window-size=720,580 https://imgur.com/upload"/>
       <property name="&lt;Super&gt;s" type="string" value="speedcrunch"/>
       <property name="&lt;Super&gt;a" type="string" value="firefox --new-window https://aur.archlinux.org/"/>
-      <property name="&lt;Super&gt;l" type="string" value="leafpad"/>
       <property name="&lt;Super&gt;j" type="string" value="joplin-appimage"/>
       <property name="&lt;Super&gt;k" type="string" value="/home/walder/.local/bin/kdenlive"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;k" type="string" value="/home/walder/.local/bin/kdenbeta"/>
@@ -69,6 +67,9 @@
       <property name="&lt;Super&gt;w" type="string" value="libreoffice --writer"/>
       <property name="&lt;Super&gt;n" type="string" value="xfce4-keyboard-settings"/>
       <property name="&lt;Super&gt;d" type="string" value="firefox --new-window https://github.com/walderf/dotfiles"/>
+      <property name="&lt;Super&gt;l" type="string" value="leafpad"/>
+      <property name="&lt;Super&gt;c" type="string" value="crow"/>
+      <property name="&lt;Super&gt;y" type="string" value="firefox --new-window https://youtube.com"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
