@@ -5,7 +5,7 @@
 
 """ plugins (vim-plug)
 call plug#begin('~/.vim/plugged')
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
@@ -20,6 +20,7 @@ Plug 'morhetz/gruvbox'
 "Plug 'plasticboy/vim-markdown'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 """ individual plugin configuration
@@ -49,6 +50,12 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " split window for :UltiSnipsEdit
 let g:UltiSnipsEditSplit="vertical"
+
+"" glow
+let g:glow_border="shadow"
+let g:glow_user_pager = v:true
+let g:glow_style = "dark"
+noremap <leader>p :Glow<CR>
 
 """ general settings
 
