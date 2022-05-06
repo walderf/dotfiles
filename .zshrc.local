@@ -10,6 +10,9 @@ alias vimdiff='nvim -d'
 # diff
 alias diff='difft'
 
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/rg.conf"
+
 # ruby
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 if [ -d "$GEM_HOME/bin" ] ; then
