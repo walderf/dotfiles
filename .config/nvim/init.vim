@@ -16,6 +16,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'morhetz/gruvbox'
+Plug 'kamykn/spelunker.vim'
+Plug 'kamykn/popup-menu.nvim'
 " tabular and vim-markdown work in tangent
 "Plug 'godlygeek/tabular'
 "Plug 'plasticboy/vim-markdown'
@@ -42,6 +44,21 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+"" spelunker
+let g:enable_spelunker_vim = 1
+let g:enable_spelunker_vim_on_readonly = 0
+let g:spelunker_target_min_char_len = 2
+let g:spelunker_max_suggest_words = 15
+let g:spelunker_max_hi_words_each_buf = 100
+" spellchecker type [1=opening/saving; 2=constant]
+let g:spelunker_check_type = 2
+let g:spelunker_highlight_type = 1
+let g:spelunker_spell_bad_group = 'SpelunkerSpellBad'
+let g:spelunker_complex_or_compound_word_group = 'SpelunkerComplexOrCompoundWord'
+"highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e
+"highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=NONE gui=underline guifg=NONE
+
+
 "" gruvbox theme
 let g:grubox_italic=1
 
@@ -57,7 +74,7 @@ let g:glow_border="shadow"
 let g:glow_user_pager = v:true
 let g:glow_style = "dark"
 noremap <leader>p :Glow<CR>
-
+       
 ""markdown preview
 let g:mkdp_auto_start=0
 let g:mkdp_auto_close=0
@@ -82,7 +99,8 @@ let g:mkdp_preview_options = {
     \ 'content_editable': v:false,
     \ 'disable_filename': 0
     \ }
-
+" toggle the browser preview with \m
+map <leader>m :MarkdownPreviewToggle<CR>
 
 """ general settings
 
@@ -103,8 +121,20 @@ set shiftwidth=2
 set expandtab
 set smartindent
 
+" backup
+set backup
+set writebackup
+set backupdir=~/.config/nvim/.backup,/tmp/.nvimbackup
+set backupcopy=auto
+:au BufWritePre * let &bex = '-' .. strftime("%Y%b%d%X") .. '~'
+
 " theme
 colorscheme gruvbox
+
+" spell
+set nospell
+"set spelllang=en_us
+"set spellsuggest=best,7
 
 " colors
 set background=dark
@@ -113,6 +143,22 @@ set termguicolors
 
 " filetypes or something 
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+ 
+"" keybindings
+
+" use Ctrl-s to save changes in insert or normal mode
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>
+
+" use Ctrl-u to undo while in insert or normal mode
+inoremap <C-u> <ESC>ui
+nnoremap <C-u> u
+
+" use Ctrl-q or Shift-q to exit the frigging show 
+inoremap <C-q> <ESC>:q<CR>
+nnoremap <C-q> :q<CR>
+inoremap <S-q> <ESC>:q<CR>
+nnoremap <S-q> :q<CR>
 
 
 
