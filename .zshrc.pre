@@ -4,6 +4,8 @@
 
 #zmodload zsh/datetime
 
+autoload colors; colors
+
 HISTSIZE=9999999
 SAVEHIST=$HISTSIZE
 
