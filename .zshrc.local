@@ -86,7 +86,12 @@ alias ports='sudo netstat -tulape'
 
 # reload httpd systemd service then give status  
 alias hr='echo && echo reloading httpd.service at && currdate && echo && sudo systemctl reload httpd.service && systemctl status httpd.service'
+
+# quick 'cd' to common directories sometimes followed by 'ls -lah'
 alias wr='echo -e "\033[1;37m% \033[0;32mcd \033[0;33m/srv/httpd/sites\033[0;32m && \033[0;32mls -lah\033[0m" && cd /srv/httpd/sites/ && la'
+alias sr="cd /sheet/reep && la && echo -e '\n\t\t\t /sheet/reep \n'"
+alias ub="cd $HOME/.local/bin/ && la && echo -e '\n\t\t\t ~/.local/bin \n'"
+alias uc="cd $HOME/.config/ && la && echo -e '\n\t\t\t ~/.config \n'"
 
 # sudo systemctl 
 alias scs='sudo systemctl status'
