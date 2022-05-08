@@ -9,6 +9,7 @@ Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -47,17 +48,27 @@ let g:syntastic_check_on_wq = 0
 "" spelunker
 let g:enable_spelunker_vim = 1
 let g:enable_spelunker_vim_on_readonly = 0
-let g:spelunker_target_min_char_len = 2
+let g:spelunker_target_min_char_len = 4
 let g:spelunker_max_suggest_words = 15
 let g:spelunker_max_hi_words_each_buf = 100
 " spellchecker type [1=opening/saving; 2=constant]
 let g:spelunker_check_type = 2
 let g:spelunker_highlight_type = 1
+let g:spelunker_disable_uri_checking = 1
+let g:spelunker_disable_email_checking = 1
+let g:spelunker_disable_account_name_checking = 1
+let g:spelunker_disable_acronym_checking = 1
+let g:spelunker_disable_backquoted_checking = 1
+let g:spelunker_disable_auto_group = 0
+
+
 let g:spelunker_spell_bad_group = 'SpelunkerSpellBad'
 let g:spelunker_complex_or_compound_word_group = 'SpelunkerComplexOrCompoundWord'
-"highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e
-"highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=NONE gui=underline guifg=NONE
+highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#f9f9f9
+highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e
 
+"" fix cursor hold
+let g:cursorhold_updatetime = 100
 
 "" gruvbox theme
 let g:grubox_italic=1
