@@ -160,6 +160,26 @@ nnoremap <C-q> :q<CR>
 inoremap <S-q> <ESC>:q<CR>
 nnoremap <S-q> :q<CR>
 
+" copy / paste
+nnoremap <C-c> "+yy
+vnoremap <C-c> "+y
+nnoremap <C-p> "+gp
+
+" search / replace
+nnoremap <leader>s :%s/
+
+" terminal
+tnoremap <Esc> <C-\><C-n>
+
+" tabs
+map <leader>t :tabnew<CR>
+map <leader>q :tabclose<CR>
+map <leader>- :-tabnext<CR>
+map <leader>= :tabnext<CR>
+
+" reload conf file
+map <leader>r :source $MYVIMRC<CR>
+
 
 
 " 
