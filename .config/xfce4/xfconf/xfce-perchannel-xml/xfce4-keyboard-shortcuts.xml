@@ -59,7 +59,6 @@
       <property name="&lt;Super&gt;s" type="string" value="speedcrunch"/>
       <property name="&lt;Super&gt;a" type="string" value="firefox --new-window https://aur.archlinux.org/"/>
       <property name="&lt;Super&gt;j" type="string" value="joplin-appimage"/>
-      <property name="&lt;Super&gt;k" type="string" value="/home/walder/.local/bin/kdenlive"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;k" type="string" value="/home/walder/.local/bin/kdenbeta"/>
       <property name="&lt;Alt&gt;&lt;Super&gt;m" type="string" value="firefox --new-window https://mail.google.com"/>
       <property name="&lt;Super&gt;p" type="string" value="firefox --new-window https://archlinux.org/packages/"/>
@@ -69,7 +68,8 @@
       <property name="&lt;Super&gt;d" type="string" value="firefox --new-window https://github.com/walderf/dotfiles"/>
       <property name="&lt;Super&gt;l" type="string" value="leafpad"/>
       <property name="&lt;Super&gt;c" type="string" value="crow"/>
-      <property name="&lt;Super&gt;y" type="string" value="firefox --new-window https://youtube.com"/>
+      <property name="&lt;Super&gt;k" type="string" value="kdenlive"/>
+      <property name="&lt;Super&gt;y" type="string" value="firefox --new-window https://www.youtube.com"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

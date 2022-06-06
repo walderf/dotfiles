@@ -131,13 +131,15 @@ network_use_log = true
     default=true
   [[row.child]]
     ratio=2
-    type="disk"
+    type="mem"
 [[row]]
   ratio=35
   [[row.child]]
-    type="net"
+    ratio=5
+    type="disk"
   [[row.child]]
-    type="mem"
+    ratio=5
+    type="net"
 # Filters - you can hide specific temperature sensors, network interfaces, and disks using filters.  This is admittedly
 # a bit hard to use as of now, and there is a planned in-app interface for managing this in the future:
 #[disk_filter]

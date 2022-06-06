@@ -81,7 +81,7 @@ alias la='ls -lah --color=auto'
 alias las='ls -lahtor --color=auto' # 'la' reverse sorted by ctime
 
 # information aliases
-alias psc='ps xawf -eo pid,user,cgroup,args'
+alias psc='ps xawwwf -eo pid,user,cgroup,args'
 alias ports='sudo netstat -tulape'
 
 # reload httpd systemd service then give status  
