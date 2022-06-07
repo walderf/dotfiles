@@ -119,3 +119,7 @@ zmodload zsh/datetime
 alias currdate='strftime "%m-%d-%Y" $EPOCHSECONDS'
 export DATE=`currdate`
 
+# history
+export HISTSIZE=9999999
+export SAVEHIST=9999999
+
