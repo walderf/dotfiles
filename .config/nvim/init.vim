@@ -168,8 +168,6 @@ nnoremap <C-u> u
 " use Ctrl-q or Shift-q to exit the frigging show 
 inoremap <C-q> <ESC>:q<CR>
 nnoremap <C-q> :q<CR>
-inoremap <S-q> <ESC>:q<CR>
-nnoremap <S-q> :q<CR>
 
 " copy / paste
 nnoremap <C-c> "+yy

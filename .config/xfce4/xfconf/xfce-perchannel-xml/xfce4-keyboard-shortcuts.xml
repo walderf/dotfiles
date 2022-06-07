@@ -70,6 +70,7 @@
       <property name="&lt;Super&gt;c" type="string" value="crow"/>
       <property name="&lt;Super&gt;k" type="string" value="kdenlive"/>
       <property name="&lt;Super&gt;y" type="string" value="firefox --new-window https://www.youtube.com"/>
+      <property name="&lt;Super&gt;h" type="string" value="chromium --net-window https://courses.edx.org/dashboard"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
