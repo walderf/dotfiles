@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="thunar" version="1.0">
+  <property name="last-sort-order" type="string" value="GTK_SORT_DESCENDING" locked="*" unlocked="root"/>
+  <property name="last-sort-column" type="string" value="THUNAR_COLUMN_NAME" locked="*" unlocked="root"/>
+</channel>
+
