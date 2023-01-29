@@ -113,9 +113,9 @@ setopt EXTENDED_GLOB
 setopt GLOB_DOTS
 # I/O
 setopt ALIASES
-setopt PRINT_EXIT_VALUE
 setopt INTERACTIVE_COMMENTS
 setopt RM_STAR_SILENT
+unsetopt PRINT_EXIT_VALUE
 unsetopt MAIL_WARNING
 unsetopt CLOBBER
 unsetopt CORRECT_ALL
