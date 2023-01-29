@@ -1,8 +1,8 @@
 # .zshrc.local 
 
-## nvim 
-export VISUAL=nvim
-export EDITOR=nvim
+# nvim 
+export VISUAL='nvim'
+export EDITOR='nvim'
 alias e='nvim'
 alias n='nvim'
 alias vimdiff='nvim -d'
@@ -10,11 +10,19 @@ alias vimdiff='nvim -d'
 # python
 alias p='python'
 
+# pager
+export PAGER='most'
+
 # diff
 alias diff='difft'
 
 # ripgrep
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/rg.conf"
+
+# java
+if [ -d "/usr/lib/jvm/java-20-openjdk/" ] ; then
+    export JAVA_HOME="/usr/lib/jvm/java-20-openjdk/"
+fi
 
 # ruby
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
@@ -41,7 +49,7 @@ fi
 zstyle ':completion:*:*:git:*' user-commands figgit:'figgit dotfile git alias'
 alias figgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-#git
+# git
 alias gcm="git commit -m "
 alias ga="git add"
 alias gp="git push"
@@ -58,12 +66,86 @@ FZF_DEFAULT_OPTS+=" --color=bg+:#3c3836,bg:#32302f,spinner:#fb4934"
 FZF_DEFAULT_OPTS+=" --color=hl:#928374,fg:#ebdbb2,header:#928374"
 FZF_DEFAULT_OPTS+=" --color=info:#8ec07c,pointer:#fb4934,marker:#fb4934"
 FZF_DEFAULT_OPTS+=" --color=fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --stats --smart-case --search-zip --no-ignore'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export MANWIDTH=107
-setopt LIST_PACKED
 
-# history
+# man
+if [ -x $(which most) ]; then
+  export MANPAGER='most'
+else 
+  export MANPAGER='less -iMXF'
+fi
+export MANWIDTH='91'
+
+# zsh options
+
+# initialization
+setopt ALL_EXPORT
+# history 
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_NO_STORE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY 
+setopt HIST_SAVE_BY_COPY 
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+unsetopt SHARE_HISTORY
+unsetopt HIST_BEEP
+# directory 
+setopt AUTO_CD
+# completions
+setopt ALWAYS_TO_END
+setopt LIST_TYPES 
+setopt LIST_PACKED
+setopt LIST_AMBIGUOUS
+setopt COMPLETE_ALIASES
+setopt AUTO_LIST
+setopt BASH_AUTO_LIST
+setopt AUTO_MENU
+setopt MARK_DIRS 
+setopt AUTO_PARAM_SLASH
+setopt COMPLETE_IN_WORD 
+unsetopt MENU_COMPLETE
+# globbing
+setopt EXTENDED_GLOB
+setopt GLOB_DOTS
+# I/O
+setopt ALIASES
+setopt PRINT_EXIT_VALUE
+setopt INTERACTIVE_COMMENTS
+setopt RM_STAR_SILENT
+unsetopt MAIL_WARNING
+unsetopt CLOBBER
+unsetopt CORRECT_ALL
+unsetopt CORRECT
+unsetopt FLOW_CONTROL
+unsetopt PATH_DIRS
+unsetopt RC_QUOTES
+# job control
+setopt AUTO_RESUME
+setopt LONG_LIST_JOBS
+setopt NOTIFY
+unsetopt BG_NICE
+unsetopt CHECK_JOBS
+unsetopt HUP
+# prompt
+setopt PROMPT_SUBST 
+# zle
+unsetopt BEEP
+# 
+
+# ulimit
+ulimit -c unlimited
+ulimit -d unlimited
+ulimit -f unlimited
+ulimit -l unlimited
+ulimit -n unlimited
+ulimit -s unlimited
+ulimit -t unlimited
+
+# command history
 alias top10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
 alias top5='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 5'
 
@@ -75,6 +157,9 @@ alias hv='sudoedit /etc/httpd/conf/extra/httpd-vhosts.conf'
 # sudo 
 alias hd='sudo -u http'
 
+# grep
+alias grep='grep --color=auto'
+
 # .zshrc editing 
 alias ez='nvim ~/.zshrc.local'
 alias rz='echo && echo reloading ~/.zshrc.local/ && echo && source ~/.zshrc.local'
@@ -82,10 +167,22 @@ alias rz='echo && echo reloading ~/.zshrc.local/ && echo && source ~/.zshrc.loca
 # ls aliases
 alias la='ls -lah --color=auto'
 alias las='ls -lahtor --color=auto' # 'la' reverse sorted by ctime
+alias sls='ls -lachptr --color=auto' 
+alias lsad='ls -ad .*'
+alias lad='ls -d -- .*(/)'
+alias lsa='ls -a -- .*(.)'
+
+# dir
+alias dir='command ls -lSrah'
+
+# tree aliases
+alias treeall='tree -apuhDFC'
 
 # information aliases
 alias psc='ps xawwwf -eo pid,user,cgroup,args'
 alias ports='sudo netstat -tulape'
+alias ipa='sudo ip -h -s -d -r -c -t -a a -color=auto'
+alias ip='command ip -color=auto'
 
 # reload httpd systemd service then give status  
 alias hr='echo && echo reloading httpd.service at && currdate && echo && sudo systemctl reload httpd.service && systemctl status httpd.service'
