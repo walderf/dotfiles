@@ -211,7 +211,7 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
  
 "" keybindings
 
-" Clear screen clears search highlighting.
+" Clear screen clears search highlighting. 
 nnoremap <C-L> :nohl<CR><C-L>
 
 " use Ctrl-s to save changes in insert or normal mode
