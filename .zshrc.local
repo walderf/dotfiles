@@ -10,6 +10,9 @@ alias vimdiff='nvim -d'
 # python
 alias p='python'
 
+# next.js telemetry
+export NEXT_TELEMETRY_DISABLED=1
+
 # pager
 export PAGER='most'
 
@@ -25,7 +28,9 @@ if [ -d "/usr/lib/jvm/java-20-openjdk/" ] ; then
 fi
 
 # ruby
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+if [ -x "/usr/bin/ruby" ] ; then 
+  export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+fi
 if [ -d "$GEM_HOME/bin" ] ; then
     export PATH="$PATH:$GEM_HOME/bin"
 fi
@@ -70,12 +75,30 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --search-zip'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # man
-if [ -x $(which most) ]; then
+if [ -x "/usr/bin/most" ] ; then
   export MANPAGER='most'
 else 
   export MANPAGER='less -iMXF'
 fi
 export MANWIDTH='91'
+
+# vlc 
+alias vlc="vlc --width=960 --height=720 --no-hdtv-fix "
+
+# guiscrcpy
+export QT_API='pyside2'
+alias guiscrpy='python -s $(which guiscrcpy)'
+
+# v4l2-ctl
+alias vd="v4l2-ctl --list-devices "
+alias vc="v4l2-ctl --list-ctrls "
+alias vf="v4l2-ctl --lust-formats "
+alias vv="v4l2-ctl "
+
+
+# aria2c
+alias ncdl="aria2c --check-certificate=false "
+alias n='ncdl '
 
 # zsh options
 
@@ -158,7 +181,7 @@ alias hv='sudoedit /etc/httpd/conf/extra/httpd-vhosts.conf'
 alias hd='sudo -u http'
 
 # grep
-alias grep='grep --color=auto'
+alias grep='grep --color=always '
 
 # .zshrc editing 
 alias ez='nvim ~/.zshrc.local'
@@ -178,11 +201,29 @@ alias dir='command ls -lSrah'
 # tree aliases
 alias treeall='tree -apuhDFC'
 
+# aria2c aliases
+alias fetch='aria2c --check-certificate=false '
+
+# cli todo / notes
+alias tc='takeit.sh config '
+alias tcf='takeit.sh config '
+alias tcc='takeit.sh command '
+alias tb='takeit.sh command '
+alias te='takeit.sh command '
+alias tf='takeit.sh file '
+alias tb='takeit.sh basic ' 
+alias ta='takeit.sh alias '
+
 # information aliases
-alias psc='ps xawwwf -eo pid,user,cgroup,args'
-alias ports='sudo netstat -tulape'
-alias ipa='sudo ip -h -s -d -r -c -t -a a -color=auto'
-alias ip='command ip -color=auto'
+alias procs='procs --color=always '
+alias lba='lsblk -a -o FSTYPE,NAME,SIZE,MOUNTPOINT,LABEL,PARTUUID '
+alias psc='ps xawwwf -eo pid,user,cgroup,args '
+alias spor="sudo ss -lipbA 'all' "
+alias ports='sudo netstat -tulapeeeW'
+alias sp='spamports'
+alias ipa='sudo ip -h -s -d -r -c=auto -t -a a '
+alias ip='command ip -color=auto '
+alias spar='sudo ss -a -tuwxpndSb0MaOe --tipc --vsock --xdp'
 
 # reload httpd systemd service then give status  
 alias hr='echo && echo reloading httpd.service at && currdate && echo && sudo systemctl reload httpd.service && systemctl status httpd.service'
@@ -212,7 +253,9 @@ alias pacnew='locate --existing --regex "\.pac(new|save)$"'
 alias pzf="yay -Qq | fzf --preview 'yay -Qil {}' --height=97% --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'"
 
 # totally a terminal clearing clear alias
-alias c='clear && echo -e "\n\n\n\t\t\t\t\t\033[0;32mcleared terminals are \033[1;31mgreat\n\n\n\t\t\033[0;34na fresh start \t\t\t\t\033[0;35mwith \033[1;31mno \033[0;35mclutter \n\n\n\n\n \t\033[0;33mjust you\n\t\t\t\t\tand the \033[1;33mcommand prompt \n\n\n \t\t\t\t\t\t\t\t\t\t\t\033[0;36mnot a single thing more \n \n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n \n \n"'
+alias raelc='clear && echo -e "\n\n\n\t\t\t\t\t\033[0;32mcleared terminals are \033[1;31mgreat\n\n\n\t\t\033[0;34na fresh start \t\t\t\t\033[0;35mwith \033[1;31mno \033[0;35mclutter \n\n\n\n\n \t\033[0;33mjust you\n\t\t\t\t\tand the \033[1;33mcommand prompt \n\n\n \t\t\t\t\t\t\t\t\t\t\t\033[0;36mnot a single thing more \n \n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n \n \n"'
+alias c='clear'
+
 
 # part of a future file naming function 
 zmodload zsh/datetime
