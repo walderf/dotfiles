@@ -7,98 +7,78 @@ alias e='nvim'
 alias n='nvim'
 alias vimdiff='nvim -d'
 
-# python
-alias p='python'
-
 # next.js telemetry
 export NEXT_TELEMETRY_DISABLED=1
 
+# bat
+export BAT_THEME='gruvbox'
+export BAT_PAGER='moar --no-linenumbers --colors=256'
+export BAT_CONFIG_PATH="${HOME}/.config/bat/config"
+
 # pager
-export PAGER='most'
+export PAGER='moar'
+export MOAR='--style=gruvbox --colors=256 --no-clear-on-exit --quit-if-one-screen --statusbar=inverse --render-unprintable=highlight --wrap --follow'
 
 # diff
 alias diff='difft'
 
 # ripgrep
-export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/rg.conf"
+export RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep/rg.conf"
 
 # java
-if [ -d "/usr/lib/jvm/java-20-openjdk/" ] ; then
-    export JAVA_HOME="/usr/lib/jvm/java-20-openjdk/"
+if [ -d '/usr/lib/jvm/java-11-openjdk/' ] ; then
+    export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
 fi
 
 # ruby
-if [ -x "/usr/bin/ruby" ] ; then 
+if [ -x '/usr/bin/ruby' ] ; then 
   export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 fi
-if [ -d "$GEM_HOME/bin" ] ; then
-    export PATH="$PATH:$GEM_HOME/bin"
+
+if [ -d "${GEM_HOME}/bin" ] ; then
+    export PATH="${PATH}:${GEM_HOME}/bin"
 fi
 
 # rust / cargo
-if [ -d "$HOME/.cargo/bin" ] ; then
-    export PATH="$PATH:$HOME/.cargo/bin"
+if [ -d "${HOME}/.cargo/bin" ] ; then
+    export PATH="${PATH}:${HOME}/.cargo/bin"
 fi
 
 # composer
-if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
-    PATH="$HOME/.config/composer/vendor/bin:$PATH"
+if [ -d "${HOME}/.config/composer/vendor/bin" ] ; then
+    PATH="${HOME}/.config/composer/vendor/bin:${PATH}"
 fi
 
 # user bin
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [ -d "${HOME}/.local/bin" ] ; then
+    PATH="${HOME}/.local/bin:${PATH}"
 fi
 
-# dotfile (config) git repo - "figgit" 
+# dotfile (config) git repo - 'figgit' 
 zstyle ':completion:*:*:git:*' user-commands figgit:'figgit dotfile git alias'
-alias figgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias figgit="/usr/bin/git --git-dir=${HOME}/.dotfiles/ --work-tree=${HOME} "
 
 # git
-alias gcm="git commit -m "
-alias ga="git add"
-alias gp="git push"
-
-# fzf
-export FZF_DEFAULT_OPTS="--multi --height=83%"
-FZF_DEFAULT_OPTS+=" --layout=reverse --info=inline"
-FZF_DEFAULT_OPTS+=" --bind 'ctrl-/:toggle-preview'"
-FZF_DEFAULT_OPTS+=" --preview 'head -500 {}'"
-FZF_DEFAULT_OPTS+=" --preview-window=up:40%:hidden"
-FZF_DEFAULT_OPTS+=" "
-FZF_DEFAULT_OPTS+=" --border --margin=1 --padding=1"
-FZF_DEFAULT_OPTS+=" --color=bg+:#3c3836,bg:#32302f,spinner:#c7d32a"
-FZF_DEFAULT_OPTS+=" --color=hl:#ae9d57,fg:#ebdbb2,header:#928374"
-FZF_DEFAULT_OPTS+=" --color=info:#c5c22f,pointer:#ff6300,marker:#d99918"
-FZF_DEFAULT_OPTS+=" --color=fg+:#ebdbb2,prompt:#ff7300,hl+:#ff6903"
-export FZF_DEFAULT_COMMAND='rg --files --hidden --search-zip'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+alias gcm='git commit -m '
+alias ga='git add'
+alias gp='git push'
 
 # man
-if [ -x "/usr/bin/most" ] ; then
-  export MANPAGER='most'
+if [ -x '/usr/bin/moar' ] ; then
+  export MANPAGER='moar'
 else 
   export MANPAGER='less -iMXF'
 fi
-export MANWIDTH='91'
+export MANWIDTH=97
 
 # vlc 
-alias vlc="vlc --width=960 --height=720 --no-hdtv-fix "
-
-# guiscrcpy
-export QT_API='pyside2'
-alias guiscrpy='python -s $(which guiscrcpy)'
+alias vlc='vlc --width=1600 --height=1200 --no-hdtv-fix '
 
 # v4l2-ctl
-alias vd="v4l2-ctl --list-devices "
-alias vc="v4l2-ctl --list-ctrls "
-alias vf="v4l2-ctl --lust-formats "
-alias vv="v4l2-ctl "
-
-
-# aria2c
-alias ncdl="aria2c --check-certificate=false "
-alias n='ncdl '
+alias vd='v4l2-ctl --list-devices '
+alias vc='v4l2-ctl --list-ctrls '
+alias vf='v4l2-ctl --lust-formats '
+alias vv='v4l2-ctl '
 
 # zsh options
 
@@ -114,7 +94,7 @@ setopt HIST_VERIFY
 setopt HIST_SAVE_BY_COPY 
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
-unsetopt SHARE_HISTORY
+setopt SHARE_HISTORY
 unsetopt HIST_BEEP
 # directory 
 setopt AUTO_CD
@@ -130,7 +110,7 @@ setopt AUTO_MENU
 setopt MARK_DIRS 
 setopt AUTO_PARAM_SLASH
 setopt COMPLETE_IN_WORD 
-unsetopt MENU_COMPLETE
+setopt MENU_COMPLETE
 # globbing
 setopt EXTENDED_GLOB
 setopt GLOB_DOTS
@@ -138,7 +118,7 @@ setopt GLOB_DOTS
 setopt ALIASES
 setopt INTERACTIVE_COMMENTS
 setopt RM_STAR_SILENT
-unsetopt PRINT_EXIT_VALUE
+setopt PRINT_EXIT_VALUE
 unsetopt MAIL_WARNING
 unsetopt CLOBBER
 unsetopt CORRECT_ALL
@@ -169,8 +149,8 @@ ulimit -s unlimited
 ulimit -t unlimited
 
 # command history
-alias top10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
-alias top5='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 5'
+alias top10="print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10"
+alias top5="print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 5"
 
 # sudo editing
 alias se='sudoedit'
@@ -183,6 +163,21 @@ alias hd='sudo -u http'
 # grep
 alias grep='grep --color=always '
 
+# fzf
+export FZF_DEFAULT_OPTS='--multi --height=83%'
+FZF_DEFAULT_OPTS+=' --layout=reverse --info=inline'
+FZF_DEFAULT_OPTS+=' --bind '\'ctrl-/:toggle-preview\'
+FZF_DEFAULT_OPTS+=' --preview '\'"head -500 {}"\'
+FZF_DEFAULT_OPTS+=' --preview-window=up:40%:hidden'
+FZF_DEFAULT_OPTS+=' '
+FZF_DEFAULT_OPTS+=' --border --margin=1 --padding=1'
+FZF_DEFAULT_OPTS+=' --color=bg+:#3c3836,bg:#32302f,spinner:#c7d32a'
+FZF_DEFAULT_OPTS+=' --color=hl:#ae9d57,fg:#ebdbb2,header:#928374'
+FZF_DEFAULT_OPTS+=' --color=info:#c5c22f,pointer:#ff6300,marker:#d99918'
+FZF_DEFAULT_OPTS+=' --color=fg+:#ebdbb2,prompt:#ff7300,hl+:#ff6903'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --search-zip'
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+
 # .zshrc editing 
 alias ez='nvim ~/.zshrc.local'
 alias rz='echo && echo reloading ~/.zshrc.local/ && echo && source ~/.zshrc.local'
@@ -194,47 +189,57 @@ alias sls='ls -lachptr --color=auto'
 alias lsad='ls -ad .*'
 alias lad='ls -d -- .*(/)'
 alias lsa='ls -a -- .*(.)'
+# override /etc/zsh/zshrc 'lsd' alias for /usr/bin/lsd
+alias lsd='/usr/bin/lsd '
 
 # dir
 alias dir='command ls -lSrah'
 
-# tree aliases
+# tree
 alias treeall='tree -apuhDFC'
 
-# aria2c aliases
+# aria2c
 alias fetch='aria2c --check-certificate=false '
+alias ncdl='aria2c --check-certificate=false '
 
-# cli todo / notes
-alias tc='takeit.sh config '
-alias tcf='takeit.sh config '
-alias tcc='takeit.sh command '
-alias tb='takeit.sh command '
-alias te='takeit.sh command '
-alias tf='takeit.sh file '
-alias tb='takeit.sh basic ' 
-alias ta='takeit.sh alias '
+# yt-dlp
+alias dlm='yt-dlp --no-check-certificates '
 
 # information aliases
 alias procs='procs --color=always '
 alias lba='lsblk -a -o FSTYPE,NAME,SIZE,MOUNTPOINT,LABEL,PARTUUID '
 alias psc='ps xawwwf -eo pid,user,cgroup,args '
-alias spor="sudo ss -lipbA 'all' "
+alias spor='sudo ss -lipbA '\'all\'' '
 alias ports='sudo netstat -tulapeeeW'
 alias sp='spamports'
 alias ipa='sudo ip -h -s -d -r -c=auto -t -a a '
 alias ip='command ip -color=auto '
-alias spar='sudo ss -a -tuwxpndSb0MaOe --tipc --vsock --xdp'
+alias spar='sudo ss -a -tuwxpndSb0MaOe --tipc --vsock --xdp '
+alias sport='sudo ss -lipbA '\'all\'' -a -t '
 
 # reload httpd systemd service then give status  
 alias hr='echo && echo reloading httpd.service at && currdate && echo && sudo systemctl reload httpd.service && systemctl status httpd.service'
 
 # quick 'cd' to common directories sometimes followed by 'ls -lah'
-alias wr='echo -e "\033[1;37m% \033[0;32mcd \033[0;33m/srv/httpd/sites\033[0;32m && \033[0;32mls -lah\033[0m" && cd /srv/httpd/sites/ && la'
-alias sr="cd /sheet/reep && la && echo -e '\n\t\t\t /sheet/reep \n'"
-alias ub="cd $HOME/.local/bin/ && la && echo -e '\n\t\t\t ~/.local/bin \n'"
-alias uc="cd $HOME/.config/ && la && echo -e '\n\t\t\t ~/.config \n'"
+alias wr='echo -e '\'"\033[1;37m% \033[0;32mcd \033[0;33m/srv/httpd/sites\033[0;32m && \033[0;32mls -lachptr\033[0m"\'' && cd /srv/httpd/sites/ && sls'
+alias sr='cd /sheet/reep && sls && echo -e '\'\n\t\t\t /sheet/reep \n\'''
+alias ub="cd ${HOME}/.local/bin/ && sls && echo -e "\'\n\t\t\t ~/.local/bin \n\'
+alias uc="cd ${HOME}/.config/ && sls && echo -e "\'\n\t\t\t ~/.config \n\'
+
+# journalctl 
+export SYSTEMD_LESS='FRXMK'
+
+# super cool aliases
+alias ubg='ls -lachptr --color=auto /usr/bin | grep --color=always -i '
+alias yo='yay -Qo '
+alias yi='yay -Sii '
+alias yy='yay -Qo /usr/bin/*'
+alias ma='man --apropos '
+
 
 # sudo systemctl 
+alias ulu='systemctl --full --all --user list-units'
+alias slu='sudo systemctl --full --all list-units'
 alias scs='sudo systemctl status'
 alias sc='sudo systemctl'
 alias scrr='sudo systemctl reload-or-restart'
@@ -244,25 +249,28 @@ alias sct='sudo systemctl start'
 # package management 
 
 # show all installed packages sorted by date installed
-alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort"
+alias packtime='expac --timefmt='\'%Y-%m-%d %T\'' '\'%l\t%n\'' | sort'
 
 # find all .pac* files
-alias pacnew='locate --existing --regex "\.pac(new|save)$"'
+alias pacnew='locate --existing --regex '\'"\.pac(new|save)$"\'
 
 # friggin cool utility using fzf to list installed packages showing a preview of each 
-alias pzf="yay -Qq | fzf --preview 'yay -Qil {}' --height=97% --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'"
+alias pzf='yay -Qq | fzf --preview '\'"yay -Qil {}"\'' --height=97% --layout=reverse --bind '\'"enter:execute('yay -Qil {} | less')"\'
 
 # totally a terminal clearing clear alias
-alias raelc='clear && echo -e "\n\n\n\t\t\t\t\t\033[0;32mcleared terminals are \033[1;31mgreat\n\n\n\t\t\033[0;34na fresh start \t\t\t\t\033[0;35mwith \033[1;31mno \033[0;35mclutter \n\n\n\n\n \t\033[0;33mjust you\n\t\t\t\t\tand the \033[1;33mcommand prompt \n\n\n \t\t\t\t\t\t\t\t\t\t\t\033[0;36mnot a single thing more \n \n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n \n \n"'
-alias c='clear'
+alias raelc='clear && echo -e '\'"\n\n\n\t\t\t\t\t\033[0;32mcleared terminals are \033[1;31mgreat\n\n\n\t\t\033[0;34na fresh start \t\t\t\t\033[0;35mwith \033[1;31mno \033[0;35mclutter \n\n\n\n\n \t\033[0;33mjust you\n\t\t\t\t\tand the \033[1;33mcommand prompt \n\n\n \t\t\t\t\t\t\t\t\t\t\t\033[0;36mnot a single thing more \n \n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n \n \n"\'
 
+alias c='clear'
 
 # part of a future file naming function 
 zmodload zsh/datetime
-alias currdate='strftime "%m-%d-%Y" $EPOCHSECONDS'
+alias currdate='strftime '\'%m-%d-%Y\'"${EPOCHSECONDS}"
 export DATE=`currdate`
 
 # history
 export HISTSIZE=9999999
 export SAVEHIST=9999999
 
+#. ~/.zsh/mouse.zsh
+#zle-toggle-mouse
+##bindkey -M vicmd M zle-toggle-mouse
