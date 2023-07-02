@@ -149,8 +149,8 @@ ulimit -s unlimited
 ulimit -t unlimited
 
 # command history
-alias top10="print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10"
-alias top5="print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 5"
+alias top10='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+alias top5='print -l ${(o)history%% *} | uniq -c | sort -nr | head -n 5'
 
 # sudo editing
 alias se='sudoedit'
@@ -199,7 +199,7 @@ alias dir='command ls -lSrah'
 alias treeall='tree -apuhDFC'
 
 # aria2c
-alias fetch='aria2c --check-certificate=false '
+alias fetch='aria2c '
 alias ncdl='aria2c --check-certificate=false '
 
 # yt-dlp
@@ -221,10 +221,11 @@ alias sport='sudo ss -lipbA '\'all\'' -a -t '
 alias hr='echo && echo reloading httpd.service at && currdate && echo && sudo systemctl reload httpd.service && systemctl status httpd.service'
 
 # quick 'cd' to common directories sometimes followed by 'ls -lah'
-alias wr='echo -e '\'"\033[1;37m% \033[0;32mcd \033[0;33m/srv/httpd/sites\033[0;32m && \033[0;32mls -lachptr\033[0m"\'' && cd /srv/httpd/sites/ && sls'
-alias sr='cd /sheet/reep && sls && echo -e '\'\n\t\t\t /sheet/reep \n\'''
-alias ub="cd ${HOME}/.local/bin/ && sls && echo -e "\'\n\t\t\t ~/.local/bin \n\'
-alias uc="cd ${HOME}/.config/ && sls && echo -e "\'\n\t\t\t ~/.config \n\'
+alias wr="echo -e \"\033[1;37m% \033[0;32mcd \033[0;33m/srv/httpd/sites\033[0;32m && \033[0;32mls -lachptr\033[0m\" && cd /srv/httpd/sites/ && sls"
+alias sr="cd /sheet/reep && sls && echo -e \n\t\t\t /sheet/reep \n"
+alias ub="cd ${HOME}/.local/bin/ && sls && echo -e \n\t\t\t ~/.local/bin \n"
+alias uc="cd ${HOME}/.config/ && sls && echo -e \n\t\t\t ~/.config \n"
+alias us="cd ${HOME}/.local/share/ && sls && echo -e \n\t\t\t ~/.local/share \n"
 
 # journalctl 
 export SYSTEMD_LESS='FRXMK'
@@ -249,13 +250,13 @@ alias sct='sudo systemctl start'
 # package management 
 
 # show all installed packages sorted by date installed
-alias packtime='expac --timefmt='\'%Y-%m-%d %T\'' '\'%l\t%n\'' | sort'
+alias packtime="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort"
 
 # find all .pac* files
-alias pacnew='locate --existing --regex '\'"\.pac(new|save)$"\'
+alias pacnew="locate --existing --regex '\.pac(new|save)$'"
 
 # friggin cool utility using fzf to list installed packages showing a preview of each 
-alias pzf='yay -Qq | fzf --preview '\'"yay -Qil {}"\'' --height=97% --layout=reverse --bind '\'"enter:execute('yay -Qil {} | less')"\'
+alias pzf="yay -Qq | fzf --preview 'yay -Qil {}' --height=97% --layout=reverse --bind 'enter:execute(yay -Qil {} | less)'"
 
 # totally a terminal clearing clear alias
 alias raelc='clear && echo -e '\'"\n\n\n\t\t\t\t\t\033[0;32mcleared terminals are \033[1;31mgreat\n\n\n\t\t\033[0;34na fresh start \t\t\t\t\033[0;35mwith \033[1;31mno \033[0;35mclutter \n\n\n\n\n \t\033[0;33mjust you\n\t\t\t\t\tand the \033[1;33mcommand prompt \n\n\n \t\t\t\t\t\t\t\t\t\t\t\033[0;36mnot a single thing more \n \n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n\n\t\t\t\t\t\t\t\t\t\033[1;32menjoy!\n \n \n"\'
@@ -264,7 +265,7 @@ alias c='clear'
 
 # part of a future file naming function 
 zmodload zsh/datetime
-alias currdate='strftime '\'%m-%d-%Y\'"${EPOCHSECONDS}"
+alias currdate="strftime '%m-%d-%Y' ${EPOCHSECONDS}"
 export DATE=`currdate`
 
 # history
